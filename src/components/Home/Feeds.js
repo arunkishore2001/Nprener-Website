@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { db } from "../../firebase";
-import { arrayUnion, doc, onSnapshot, serverTimestamp, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, serverTimestamp, updateDoc, deleteDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from 'uuid';
 import CommentsPost from "./CommentsPost";
 import FollowUpdate from "./FollowUpdate";
@@ -17,7 +17,8 @@ import ShareIcon from "./images/share.svg";
 import LikesPost from "./LikesPost";
 import ReadMoreReact from "./ReadMoreReact";
 import { Icon } from '@iconify/react';
-import { addDoc, collection } from 'firebase/firestore';
+
+
 
 
 function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, imageURLs }) {
@@ -34,10 +35,15 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
 
   const [shareLink, setShareLink] = useState(""); // State to store the shareable link
 
-  function deletePost(){
-
+  async function deletePost() {
+    try {
+      await deleteDoc(commentRef);
+      console.log("Post deleted successfully!");
+      // Optionally, you can navigate the user to a different page after deletion.
+    } catch (error) {
+      console.error("Error deleting post: ", error);
+    }
   }
-
   const data = [
     { id: 0, label: 'Delete', ico: 'ep:delete ', onClick: deletePost },
   ];

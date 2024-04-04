@@ -164,7 +164,7 @@ const NewPost = () => {
   const data = [
     { id: 0, label: 'Information', ico: 'iwwa:info' },
     { id: 1, label: 'Idea', ico: 'icons8:idea' },
-    { id: 2, label: 'Gauget', ico: 'carbon:machine-learning' },
+    { id: 2, label: 'Gadget', ico: 'carbon:machine-learning' },
   ];
 
   const [isOpen, setOpen] = useState(false);
@@ -258,7 +258,7 @@ const NewPost = () => {
           ></textarea>
         </div>
 
-        {domain ==="Gauget" && <div className="location-input">
+        {domain ==="Gadget" && <div className="location-input">
           <input
             type="text"
             name="location"
