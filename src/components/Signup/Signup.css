@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.full-screen{
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #F0FAFF;
+}
+.containerrr{
+    position: relative;
+    background: #ffffff;
+    width: 589px;
+    height: 722px;
+    display: flex;
+    align-items: center;
+}
+.left-container{
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 589px;
+    height: 722px;
+}
+
+.logo {
+    display: flex;
+    position: absolute;
+    left: 32px;
+    top: 26px;
+    font-family: 'Kelly Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+}
+.logo p:nth-child(1){
+    color: #FF3535;
+}
+
+.logo p:nth-child(3){
+    color: #00A3FF;
+}
+
+signin-container{
+    display: flex;
+    flex-direction: column;
+}
+.signin-header{
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signin-header h1{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+}
+.signin-header p{
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #808080;
+}
+.entry-container{
+    margin-top: 28px;
+}
+.entry-container h3{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+.entry-container input{
+    margin-top: 13px;
+    width: 297px;
+    height: 41px;
+    outline: none;
+    padding: 0px 15px;
+}
+.password-entry{
+    margin-top: 15px;
+}
+.close-it{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.password-entry i{
+    margin-left: -30px;
+    margin-top: 10px;
+    color: #808080;
+}
+.forgot h3{
+    margin-top: 12px;
+    font-size: 14px;
+    color: #FF3535;
+    text-decoration: none;
+    font-weight: 500;
+    padding-left: 160px;
+    text-align: left;
+}
+.forgot h3 span {
+    color: #FF3535;
+    font-size: 11px;
+    font-weight: 500;
+}
+.forgot a{
+    text-decoration: none;
+}
+
+.message p{
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF3535;
+    margin-top: 10px;
+  }
+
+.buttons{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
+
+.btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 297px;
+    height: 41px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn h3{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signin-btn{
+    background: #FF3535;
+}
+.signin-btn h3{
+    color: #ffffff;
+}
+
+.signin-google{
+    gap: 19px;
+}
+
+.line{
+    width: 136px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.or{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:6px;
+}
+
+.or h3{
+    font-size: 14px;
+}
+
+.join-now{
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+
+.join-now p{
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.join-now a {
+    text-decoration: none;
+}
+.join-now a p{
+    color: #00A3FF;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+

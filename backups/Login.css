@@ -1,0 +1,376 @@
+*{
+    margin: 0;
+    padding: 0;
+  
+  }
+  .whole-site{
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  background:#F0FAFF;
+  ;
+  }
+  
+  .left-box{
+    position: relative;
+    width: 575px;
+    height: 580px;
+    left: 120px;
+    top: 40px;
+   /* border: 1px solid black; */ 
+    background: #FFFFFF;
+  
+  }
+  
+  
+  /*--------------- heading section ---------------*/
+  
+  
+  .heading {
+    display: flex;
+    position: absolute;
+    
+    left: 25px;
+    
+    font-family: 'Kelly Slab';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+  
+  }
+  
+  
+  
+  .heading p:nth-child(1){
+    color: #FF3535;
+  }
+  
+  .heading p:nth-child(3){
+    color: #00A3FF;
+  }
+  
+  
+  
+  /*--------------- Sign In Section  -------------*/
+  
+  
+  
+  
+  .signin-box{
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 80px;
+    left: 120px;
+  /*  border: 1px solid black;   */
+    background: #FFFFFF;
+   
+  }
+  
+  
+  
+  .signin h2{
+    
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 39px;
+  }
+  
+  
+  .signin p{
+    color: #808080;
+  
+    position: absolute;
+  width: 252px;
+  height: 15px;
+  left: 1px;
+  top: 40px;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  font-size: 12px;
+  
+  
+  }
+  
+  .email p{
+  position: relative;
+  
+  
+  top: 20px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+  line-height: 40px;
+  
+  }
+  .warn1{
+    position: absolute;
+    left: 50%;
+  }
+  .warn2{
+    position: relative;
+    margin-top: 80px;
+    margin-left: 150px;
+  }
+  
+  
+  .email input{
+    position: relative;
+    width: 285px;
+    height: 38px;
+    
+    top: 18px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25); ;
+    outline: none;
+    border: #EFEFE6 ;
+  
+  }
+  
+  
+  
+  .pass p{
+  position: absolute;
+  
+  top: 150px;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+  line-height: 17px;
+  }
+  
+  .pass input{
+    position: absolute;
+  width: 285px;
+  height: 41px;
+  
+  top: 44%;
+  
+  background: #FFFFFF;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  }
+  
+  i{ 
+    position: absolute;
+    
+    left: 85%;
+    top: 47%;
+  
+    color: #808080;
+    cursor: pointer;
+  
+  }
+  
+  .forgpass a{
+    position: absolute;
+   bottom: 150px;
+    
+    text-decoration: none;
+    color:#FF3535 ;
+  
+  
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 14px;
+    
+  }
+  
+  
+  /*--------------button sections-----------------*/
+  
+  .signin-btn button{
+    position: absolute;
+  width: 285px;
+  height: 41px;
+  
+  top: 280px;
+  
+  background: #FF3535;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  
+  border: none;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 520;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  cursor: pointer;
+  }
+  
+  .signin-btn h5{
+    position: relative;
+    top: 90px;
+    left: 145px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+  }
+  
+  .or{
+    position: absolute;
+    top: 240px;
+    
+  }
+  .signin-btn h5::before{
+    content: "";
+    display: block; 
+    width: 150px;
+    
+    position: relative;
+    left: 15px;
+    top: 8px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  .signin-btn h5::after{
+    content: "";
+    display: block; 
+    width: 142px;
+    
+    position: relative;
+    right:146px;
+    bottom: 7px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .signin-google button{
+  position: absolute;
+  width: 285px;
+  height: 41px;
+  
+  top: 350px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  border: none;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  cursor: pointer;
+  }
+  
+  .signin-google img{
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 55px;
+    top: 360px;
+    outline: none;
+  }
+  
+  
+  .joinnow p {
+    position: absolute;
+  width: 182px;
+  height: 16px;
+  left: 69px;
+  top: 106%;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  }
+  
+  
+  .joinnow a{
+    position: absolute;
+  width: 182px;
+  height: 16px;
+  left: 178px;
+  top: 106%;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #00A3FF;
+  text-decoration: none;
+  }
+  
+  
+  
+  .right-box{
+  /*  position: relative;
+    width: 589px;
+    height: 722px;
+    left: 469px;
+    top: 308px;
+    border: 1px solid black; 
+    background: #FFFFFF;
+   */
+  
+   position: relative;
+   width: 700px;
+   height: 580px;
+   left: 575px;
+   bottom: px;
+  /* border: 1px solid black; */
+   background: #FFFFFF;
+  
+   
+    
+    
+  }
+    
+  .right-box img{
+    
+    position: relative;
+    left: 150px;
+   top: 2px;
+    width: 500px;
+    height: 578px;
+  }
+  
+  /*-----------bottom box-------------*/
+  .bottom-box{
+    position: relative;
+    width: 1170px;
+    height: 40px;
+    left: 60px;
+    top: 50px;
+  /* border: 1px solid black; */
+    background: #FFFFFF; 
+  }
+  #email-error{
+    color: red;
+    position: relative;
+    left: 40px;
+    bottom: 48px;
+    font-size: 12px;
+  }
+  
+  #pass-error{
+    color: red;
+    position: absolute;
+    left: 70px;
+    top: 152px;
+    font-size: 12px;
+  }
+  .email input{
+    padding-left: 20px;
+    transition: 0.3s;
+  }
+  
+  .email input:hover{
+    box-shadow: 0px 0px 2px rgb(166, 218, 255);
+  }
