@@ -137,7 +137,7 @@ function Login() {
           </button>
         </div></form>
         <div className="join-now">
-          <p>New to Npreneur ? </p>
+          <p>New to Npreneur? </p>
           <Link to="/signup">
             <p> Join Now</p>
           </Link>

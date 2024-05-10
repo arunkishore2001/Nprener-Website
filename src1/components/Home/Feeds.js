@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { db } from "../../firebase";
-import { arrayUnion, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, serverTimestamp, updateDoc, deleteDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from 'uuid';
 import CommentsPost from "./CommentsPost";
 import FollowUpdate from "./FollowUpdate";
 import VideoPlayer from "./VideoPlayer";
+import SimpleImageSlider from "./SimpleImageSlider"; // Import your image slider component
+import DotIcon from "./images/dot.svg";
 import CommentIcon from "./images/comment.svg";
+import ProfileIcon from "./images/Ellipse1.png";
+import LikeIcon from "./images/like.svg";
 import MenuIcon from "./images/menu.svg";
 import ShareIcon from "./images/share.svg";
 import LikesPost from "./LikesPost";
+import ReadMoreReact from "./ReadMoreReact";
 import { Icon } from '@iconify/react';
+
+
+
 
 function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, imageURLs }) {
   const { user } = useUserAuth();
@@ -27,16 +35,22 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
 
   const [shareLink, setShareLink] = useState(""); // State to store the shareable link
 
-  function deletePost(){
-    deleteDoc(doc(db, "posts", id));
+  async function deletePost() {
+    try {
+      await deleteDoc(commentRef);
+      console.log("Post deleted successfully!");
+      // Optionally, you can navigate the user to a different page after deletion.
+    } catch (error) {
+      console.error("Error deleting post: ", error);
+    }
   }
-
   const data = [
     { id: 0, label: 'Delete', ico: 'ep:delete ', onClick: deletePost },
   ];
 
   const [isOpen, setOpen] = useState(false);
   const [items, setItem] = useState(data);
+  const [selectedItem, setSelectedItem] = useState(0);
 
   const toggleDropdown = () => setOpen(!isOpen);
 
@@ -46,16 +60,17 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
     setShareLink(shareableLink);
   };
 
+
   useEffect(() => {
     const docRef = doc(db, "posts", id);
     onSnapshot(docRef, (snapshot) => {
-      setComments(snapshot.data().comments || "");
+      setComments(snapshot.data().comments);
       setVideoURL(snapshot.data().videoURL || ""); // Set video URL if available
       setLocation(snapshot.data().location || ""); // Set the location
     });
 
     userFollowing();
-  }, [id, db]);
+  }, []);
 
   useEffect(() => {
     if (imageURLs.length > 1) {
@@ -97,13 +112,36 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
     }
   };
 
-  const iconData = [
-    { id: 0, label: 'Information', ico: 'iwwa:info' },
-    { id: 1, label: 'Idea', ico: 'icons8:idea' },
-    { id: 2, label: 'Gauget', ico: 'carbon:machine-learning' },
-  ];
-
-  const mainIcon = iconData.find((item) => item.label === domain)?.ico
+  // const handleCreatePost = () => {
+  //   const postId = uuidv4(); // Generate a unique post ID
+  //   const newPostData = {
+  //     // Include the unique post ID along with other post data
+  //     postId: postId,
+  //     name: name,
+  //     email: email,
+  //     content: content,
+  //     time: time,
+  //     photoURL: photoURL,
+  //     likes: likes,
+  //     uid: uid,
+  //     domain: domain,
+  //     imageURLs: imageURLs,
+  //     // ...
+  //   };
+  
+  //   // Log the unique post ID to the console
+  //   console.log("New Post ID:", postId);
+  
+  //   // Add the new post to the database
+  //   addDoc(collection(db, "posts"), newPostData)
+  //     .then(() => {
+  //       // Post added successfully
+  //     })
+  //     .catch((error) => {
+  //       // Handle errors
+  //     });
+  // }
+  
 
   return (
     <div className="view-post">
@@ -124,7 +162,6 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
         </div>
 
         <div className={`bt-2 domain`}>
-          <Icon icon={mainIcon}></Icon>
           {domain && <p className="domain-text">{domain}</p>}
         </div>
 
@@ -139,14 +176,12 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
                   <img src={MenuIcon} alt="Profile" />
               </div>
               <div className={`dropdown-body ${isOpen && 'open'}`}>
-              {user.uid === uid && 
-                items.map((item) => (
+                {items.map((item) => (
                   <div className="dropdown-item bt-2" onClick={(e) => { toggleDropdown(); item.onClick() }} id={item.id} key={item.id}>
                     <Icon icon={item.ico}></Icon>
                     {item.label}
                   </div>
-                ))
-              }
+                ))}
               </div>
             </div>
 

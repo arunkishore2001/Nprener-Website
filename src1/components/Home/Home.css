@@ -371,11 +371,6 @@
     cursor: pointer;
 }
 
-.MenuListMenuItem.activeMenu{
-    background-color: var(--back);
-    color:#00A3FF ;
-}
-
 /* Button type 2 */
 
 .bt-2 {
@@ -1032,38 +1027,5 @@
     filter: invert(53%) sepia(13%) saturate(7497%) hue-rotate(172deg) brightness(95%) contrast(113%);
 }
 
-/* how to use page */
 
-.howToUse-page{
-    padding: 40px;
-    text-align: justify;
-}
 
-.howToUse-page h3{
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.howToUse-page h3::after{
-    content: '';
-    display: block;
-    position: absolute;
-    height: 3px;
-    width: 50px;
-    background-color: #00A3FF;
-    bottom: -10px;
-}
-
-.howToUse-page p, .howToUse-page li{
-    font-size: 14px;
-    line-height: 150%;
-}
-
-.howToUse-page p{
-    margin-bottom: 10px;
-}
-
-.howToUse-page li{
-    margin-left: 20px;
-    list-style: circle;
-}

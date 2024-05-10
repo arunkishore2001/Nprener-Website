@@ -2,10 +2,9 @@ import { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
-import img2 from './loginImgs/image2.png';
+import './Signup.css';
 
-function Login() {
+function Signup() {
 
 
     const initialValues = {email:"",pass:""};
@@ -15,7 +14,7 @@ function Login() {
     const [isSubmit,setIsSubmit] = useState(false);
     const [nerr,setNerr] = useState("");
 
-    const { logIn , googleSignIn} = useUserAuth();
+    const { signUp } = useUserAuth();
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -28,8 +27,8 @@ function Login() {
         const email = formValues.email;
         const passs = formValues.pass;
         try{
-          await logIn(email,passs);
-          navigate('/home');
+          await signUp(email,passs);
+          navigate('/details');
         }
         catch (err) {
           setNerr(err.message);
@@ -62,21 +61,10 @@ function Login() {
         return errors;
     };
 
-  const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
-    try{
-      await googleSignIn();
-      navigate('/home');
-    }
-    catch(err){
-      setNerr(err.message);
-    }
-  }
-
   return (
     <div className="Login">
       <div className="full-screen">
-  <div className="containerr">
+  <div className="containerrr">
     <div className="left-container">
       <div className="logo">
         <p>N</p>
@@ -86,7 +74,7 @@ function Login() {
       <div className="signin-container">
         <form id='form' onSubmit={handleSubmit}>
         <div className="signin-header">
-          <h1>Sign in</h1>
+          <h1>Join with Us</h1>
           <p>Connect with peoples and Entrepreneurs</p>
         </div>
         <div className="entry-container">
@@ -124,27 +112,17 @@ function Login() {
         </div>
         <div className="buttons">
           <button className="signin-btn btn">
-            <h3>Sign in</h3>
-          </button>
-          <div className="or">
-            <div className="line" />
-            <h3>or</h3>
-            <div className="line" />
-          </div>
-          <button className="signin-google btn" onClick={ handleGoogleSignIn }>
-            <img src={img2} />
-            <h3>Sign in with google</h3>
+            <h3>Create Account</h3>
           </button>
         </div></form>
         <div className="join-now">
-          <p>New to Npreneur ? </p>
-          <Link to="/signup">
-            <p> Join Now</p>
-          </Link>
+          <p>Already Existing User? </p>
+          <a href="#"><Link to="/">
+            <p> Sign in</p></Link>
+          </a>
         </div>
       </div>
     </div>
-    <div className="right-container"></div>
   </div>
 </div>
 
@@ -152,4 +130,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

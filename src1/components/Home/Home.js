@@ -1,31 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../../context/UserAuthContext";
+import Feeds from "./Feeds";
 import NewPost from "./NewPost";
 import Navbar from "./Navbar";
 import Leftbar from "./Leftbar";
 import ProfileSection from "./ProfileSection";
-import HowToUse from "../HowToUse/HowToUse";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from '../../firebase';
+
 
 const Home = () => {
-  const { user } = useUserAuth();
+  const { logOut, user } = useUserAuth();
+  const navigate = useNavigate();
+  const userName = user.displayName;
 
-  const [currentPage, setCurrentPage] = useState("post");
+  const [data, setData] = useState([]);
 
   return (
     <div className="full-screen-home">
-      <div className="nav">{user.uid && <Navbar user={user}/>}</div>
+
+      <div className="nav">
+        {user.uid && <Navbar user={user}/>}
+      </div>
 
       <div className="main-screen-home">
-        {user.uid && <Leftbar currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+
+        {user.uid && <Leftbar />}
 
         <div className="post">
-          {user.uid && currentPage === "post" && <NewPost />}
-          {user.uid && currentPage === "howToUse" && <HowToUse />}
+
+          {user.uid && <NewPost />}
+
         </div>
 
         {user.uid && <ProfileSection />}
+
+
       </div>
     </div>
   );

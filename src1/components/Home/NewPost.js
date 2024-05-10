@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useUserAuth } from '../../context/UserAuthContext';
 import './Home.css';
+import PictureIcon from './images/picture.svg';
 import UploadIcon from './images/upload.svg';
+import VideoIcon from './images/video.svg';
 import { ReactComponent as LoadIcon } from './images/loading.svg';
 import {
   addDoc,
   arrayUnion,
   collection,
   doc,
+  getDoc,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
   serverTimestamp,
+  setDoc,
   updateDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { updateProfile } from 'firebase/auth';
 import Feeds from './Feeds';
 import moment from 'moment/moment';
 import { storage } from '../../firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import Iconify from '@iconify/iconify';
 import { Icon } from '@iconify/react';
+
+
+
 
 const NewPost = () => {
   const initialValues = {
@@ -46,7 +56,20 @@ const NewPost = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [imageUploading, setImageUploading] = useState(false);
   const [videoUploading, setVideoUploading] = useState(false);
-  
+
+  const [location, setLocation] = useState(""); // State for location input
+  const [suggestions, setSuggestions] = useState([]); // State for autocomplete suggestions
+
+  // Function to handle location input changes
+  const handleLocationChange = (value) => {
+    setLocation(value);
+  };
+
+
+
+
+
+
   // State for handling video uploads
   const [video, setVideo] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
@@ -141,7 +164,7 @@ const NewPost = () => {
   const data = [
     { id: 0, label: 'Information', ico: 'iwwa:info' },
     { id: 1, label: 'Idea', ico: 'icons8:idea' },
-    { id: 2, label: 'Gauget', ico: 'carbon:machine-learning' },
+    { id: 2, label: 'Gadget', ico: 'carbon:machine-learning' },
   ];
 
   const [isOpen, setOpen] = useState(false);
@@ -207,6 +230,21 @@ const NewPost = () => {
     }
   };
 
+  const [myAllData, setMyAllData] = useState([]);
+
+  useEffect(() => {
+    userAllData();
+}, []);
+
+function userAllData() {
+    const docRef = doc(db, "user", user.user.uid);
+    onSnapshot(docRef, (snapshot) => {
+      setMyAllData(snapshot.data());
+    });
+  }
+
+  console.log(myAllData);
+
   // Function to generate Google Maps URL from location
   const getLocationURL = (location) => {
     // Example Google Maps URL format
@@ -216,7 +254,7 @@ const NewPost = () => {
 
   return (
     <>
-      <div className="new-post">
+      { myAllData.entrepreneur === 'yes' && <div className="new-post">
         <div className="top-newpost">
           <div className="avator">
             <img src={user.user.photoURL} alt="profile" />
@@ -235,7 +273,7 @@ const NewPost = () => {
           ></textarea>
         </div>
 
-        {domain ==="Gauget" && <div className="location-input">
+        {domain ==="Gadget" && <div className="location-input">
           <input
             type="text"
             name="location"
@@ -305,7 +343,7 @@ const NewPost = () => {
 
           </div>
         </div>
-      </div>
+      </div>}
 
       {videoURL && (
         <div className="video-preview">
