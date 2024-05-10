@@ -258,7 +258,7 @@ function Feeds({ id, name, email, content, time, photoURL, likes, uid, domain, i
         </div>
       )}
 
-      {commentActive &&
+      {commentActive && comments.length > 1 &&
         comments?.map(({ commentId, userName, comment, user, commentPic, createdAt }) => (
           <CommentsPost
             key={commentId}
